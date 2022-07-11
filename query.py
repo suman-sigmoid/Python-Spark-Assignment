@@ -34,6 +34,19 @@ print("Question - 3 -> ")
 #sqlDF3.show()
 
 
+# 3rd
+# Which stock had the max gap up or gap down opening
+# from the previous day close price I.e. (previous day close - current day open price )
+# @app.route("/max_min_gap")
+# def max_min_gap_in_stock_price():
+#     new_table = spark.sql(
+#         " SELECT Date,company,Open,Close , Close - LAG(Open,1,NULL) OVER (PARTITION BY company ORDER BY Date) as gap FROM stocks_data")
+#     new_table.createOrReplaceTempView("max_min_table")
+#     query = "select company, min(gap),max(gap) from max_min_table group by company"
+#     df = spark.sql(query)
+#     data = df.select('*').rdd.flatMap(lambda x: x).collect()
+#     return jsonify({'Data': data})
+
 print("Query - 4 - Which stock has moved maximum from 1st Day data to the latest day Daya")
 
 print("Tables having Only Open Price from each stock at first Day")
@@ -56,10 +69,13 @@ sqlDF4 = spark.sql("Select t1.Stock_Name , t1.High-t1.Open as Maximum_Movement f
                    "t1.High-t1.Open = (Select Max(t2.High-t2.Open) from joined_table t2)")
 #sqlDF4.show()
 
+# stddev for Standard Deviation
+
 print("Query - 5 -> Find the standard deviations for each stock over the period")
 sqlDF5 = spark.sql("SELECT Stock_Name, STD(Close) as Standard_Deviation from table group by Stock_Name")
 #sqlDF5.show()
 
+# Add mean and median for both open and close prices for each stock
 
 print("Query - 6.1 -> Mind the mean  and median prices for each stock")
 

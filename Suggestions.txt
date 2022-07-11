@@ -1,0 +1,5 @@
+1. API Server code for all endpoints need to be added.
+2. Functions to be added for extraction of data.
+3. Proper repository structure can be there for data, extraction and REST API(endpoints).
+4. Readme can be more extensive.
+5. Comment needs to be added.
